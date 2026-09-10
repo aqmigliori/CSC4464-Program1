@@ -21,9 +21,12 @@ int main(int argc, char *argv[]) {
         perror("pcap_open_offline");
         exit(EXIT_FAILURE);
     }
-    // pcap_loop(handle, 0, packet_handler, NULL);
-    struct pcap_pkthdr header;
-    char *packet = pcap_next(handle, header);
+    pcap_loop(handle, 0, packet_handler, NULL);
+
+    // struct pcap_pkthdr *header;
+    // char *packet = pcap_next(handle, header);
+
+
 
     pcap_close(handle);
 
