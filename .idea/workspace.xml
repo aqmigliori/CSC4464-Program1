@@ -25,7 +25,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="feac6806-76c9-4f78-af70-b6bb6f52ad3e" name="Changes" comment="">
+    <list default="true" id="feac6806-76c9-4f78-af70-b6bb6f52ad3e" name="Changes" comment="updated progress">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trace.c" beforeDir="false" afterPath="$PROJECT_DIR$/trace.c" afterDir="false" />
     </list>
@@ -38,7 +38,7 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="29" />
+    <option name="cachedIndexableFilesCount" value="33" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -96,61 +96,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="2.055493026484056" />
-      <entry key="MS500" value="3.397258713442551" />
-      <entry key="S2" value="3.834295077737591" />
-      <entry key="S5" value="3.943401254520106" />
-      <entry key="S10" value="4.321009722629304" />
-      <entry key="S30" value="8.571453253498731" />
-      <entry key="S60" value="14.647692799066904" />
-      <entry key="M2" value="22.47559812536944" />
-      <entry key="M5" value="37.53328329257207" />
-      <entry key="M10" value="61.01543665444655" />
-      <entry key="M15" value="82.96629936131941" />
-      <entry key="M30" value="128.4970816381113" />
-      <entry key="H1" value="170.15760286629558" />
-      <entry key="H2" value="214.6560406392568" />
-      <entry key="H4" value="314.1719863343572" />
-      <entry key="D1" value="676.0820277164034" />
-      <entry key="W1" value="810.1522844220724" />
+      <entry key="MS100" value="2.3073211009819157" />
+      <entry key="MS500" value="3.498588989289267" />
+      <entry key="S2" value="3.9712312653893784" />
+      <entry key="S5" value="4.496657587003251" />
+      <entry key="S10" value="5.544814970225069" />
+      <entry key="S30" value="8.611701868769956" />
+      <entry key="S60" value="10.921364951569021" />
+      <entry key="M2" value="17.55876625973212" />
+      <entry key="M5" value="41.24881833805344" />
+      <entry key="M10" value="62.52959772213597" />
+      <entry key="M15" value="72.73284987362258" />
+      <entry key="M30" value="85.06835277485594" />
+      <entry key="H1" value="92.17690914138373" />
+      <entry key="H2" value="96.09926961852275" />
+      <entry key="H4" value="105.4388414887316" />
+      <entry key="D1" value="494.91204698991606" />
+      <entry key="W1" value="923.4089301007589" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="1.6163604983639846E-137" />
-      <entry key="S10" value="4.0204067940406884E-69" />
-      <entry key="S30" value="1.6102470529703927E-23" />
-      <entry key="S60" value="4.436511135894798E-12" />
-      <entry key="M2" value="2.6669062150473877E-6" />
-      <entry key="M5" value="0.008641609820437005" />
-      <entry key="M10" value="0.13069475923917231" />
-      <entry key="M15" value="0.3240477677893052" />
-      <entry key="M30" value="0.8045150411143106" />
-      <entry key="H1" value="1.2715057198367137" />
-      <entry key="H2" value="1.6908265012690118" />
-      <entry key="H4" value="2.327032453911583" />
-      <entry key="D1" value="4.217939171734059" />
-      <entry key="W1" value="4.874793602101228" />
+      <entry key="MS500" value="1.4291086877967695E-207" />
+      <entry key="S2" value="1.9443136055802224E-52" />
+      <entry key="S5" value="2.0682767384923263E-21" />
+      <entry key="S10" value="4.617030543081473E-11" />
+      <entry key="S30" value="4.4560897608186795E-4" />
+      <entry key="S60" value="0.028309512705514978" />
+      <entry key="M2" value="0.23449110155817918" />
+      <entry key="M5" value="0.8454770558945084" />
+      <entry key="M10" value="1.2995802640132739" />
+      <entry key="M15" value="1.500215373669088" />
+      <entry key="M30" value="1.7320585414412424" />
+      <entry key="H1" value="1.8611829752931215" />
+      <entry key="H2" value="1.9306479910080308" />
+      <entry key="H4" value="2.0451856554421295" />
+      <entry key="D1" value="5.188629195027483" />
+      <entry key="W1" value="8.249530180489396" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.9710232811799726" />
-      <entry key="MS500" value="3.3689244495089903" />
-      <entry key="S2" value="3.826314644463154" />
-      <entry key="S5" value="3.9401192078303966" />
-      <entry key="S10" value="4.318947976571426" />
-      <entry key="S30" value="8.55109658173939" />
-      <entry key="S60" value="14.601854034942125" />
-      <entry key="M2" value="22.42204853242238" />
-      <entry key="M5" value="37.49660092928392" />
-      <entry key="M10" value="61.108948625744155" />
-      <entry key="M15" value="83.25782129410295" />
-      <entry key="M30" value="129.27772316591208" />
-      <entry key="H1" value="171.4136966671586" />
-      <entry key="H2" value="216.33741904179595" />
-      <entry key="H4" value="316.4926140143524" />
-      <entry key="D1" value="680.2979534125205" />
-      <entry key="W1" value="815.0267415079229" />
+      <entry key="MS100" value="2.2664543181861454" />
+      <entry key="MS500" value="3.4872606337012706" />
+      <entry key="S2" value="3.9324705702717693" />
+      <entry key="S5" value="4.433917091151811" />
+      <entry key="S10" value="5.4939637527207505" />
+      <entry key="S30" value="8.5885166615798" />
+      <entry key="S60" value="10.935601815487857" />
+      <entry key="M2" value="17.78120471820077" />
+      <entry key="M5" value="42.08283924980319" />
+      <entry key="M10" value="63.8206851345658" />
+      <entry key="M15" value="74.22654513238575" />
+      <entry key="M30" value="86.7966404126892" />
+      <entry key="H1" value="94.03606112138682" />
+      <entry key="H2" value="98.02885993485914" />
+      <entry key="H4" value="107.48336774390008" />
+      <entry key="D1" value="500.09952022252696" />
+      <entry key="W1" value="931.6581324377347" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
@@ -168,38 +168,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/aidanmigliori/CLionProjects/CPE 4464/Program1&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;clion.platformio.config&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Native Application.all.executor": "Run",
+    "Native Application.trace-Darwin-arm.executor": "Run",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/aidanmigliori/CLionProjects/CPE 4464/Program1",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "org.rust.first.attach.projects": "true",
+    "settings.editor.selected.configurable": "clion.platformio.config",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Native Application.all">
+  <component name="RunManager" selected="Native Application.trace-Darwin-arm">
     <configuration name="README" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Program1" TARGET_NAME="README" CONFIG_NAME="README" version="1" RUN_TARGET_PROJECT_NAME="Program1" RUN_TARGET_NAME="README">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -236,11 +238,26 @@
       <updated>1780868610732</updated>
       <workItem from="1780877207629" duration="1000" />
       <workItem from="1789015508123" duration="2693000" />
-      <workItem from="1789161022855" duration="17370000" />
+      <workItem from="1789161022855" duration="19217000" />
+      <workItem from="1789436829064" duration="4662000" />
+      <workItem from="1789680022128" duration="9412000" />
     </task>
+    <task id="LOCAL-00001" summary="updated progress">
+      <option name="closed" value="true" />
+      <created>1789202052386</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1789202052386</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="updated progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated progress" />
   </component>
 </project>
