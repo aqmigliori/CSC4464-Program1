@@ -25,8 +25,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="feac6806-76c9-4f78-af70-b6bb6f52ad3e" name="Changes" comment="added arpHeader struct">
+    <list default="true" id="feac6806-76c9-4f78-af70-b6bb6f52ad3e" name="Changes" comment="ARP and IP working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trace.c" beforeDir="false" afterPath="$PROJECT_DIR$/trace.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,61 +97,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="7.950056022039223E-37" />
-      <entry key="MS500" value="1.42910812719231E-7" />
-      <entry key="S2" value="0.05568245443613973" />
-      <entry key="S5" value="0.8575439227230829" />
-      <entry key="S10" value="2.242770994406586" />
-      <entry key="S30" value="5.856780860919659" />
-      <entry key="S60" value="11.918548956948188" />
-      <entry key="M2" value="21.894522513171715" />
-      <entry key="M5" value="40.805602907175185" />
-      <entry key="M10" value="57.94003029238226" />
-      <entry key="M15" value="71.05096073122733" />
-      <entry key="M30" value="129.36574418973862" />
-      <entry key="H1" value="269.7646687641596" />
-      <entry key="H2" value="448.86663256261266" />
-      <entry key="H4" value="601.7763015927071" />
-      <entry key="D1" value="1134.700575000989" />
-      <entry key="W1" value="1616.926128616259" />
+      <entry key="MS100" value="1.9816161989400443" />
+      <entry key="MS500" value="3.351532713754226" />
+      <entry key="S2" value="4.252522675740193" />
+      <entry key="S5" value="5.670161495725638" />
+      <entry key="S10" value="6.990142188740165" />
+      <entry key="S30" value="9.540040391127924" />
+      <entry key="S60" value="12.576713891692535" />
+      <entry key="M2" value="18.873220489631525" />
+      <entry key="M5" value="41.64689636382369" />
+      <entry key="M10" value="89.3014861462948" />
+      <entry key="M15" value="135.53697232093543" />
+      <entry key="M30" value="257.64815758274744" />
+      <entry key="H1" value="465.0792560557791" />
+      <entry key="H2" value="786.8594160716327" />
+      <entry key="H4" value="1158.2334444213398" />
+      <entry key="D1" value="2064.6773857635344" />
+      <entry key="W1" value="2676.2423579169767" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000339553869808" />
-      <entry key="S2" value="1.0763369769599636" />
-      <entry key="S5" value="1.3623608685671462" />
-      <entry key="S10" value="1.6874391557686617" />
-      <entry key="S30" value="2.5421372923026686" />
-      <entry key="S60" value="3.2005958861568984" />
-      <entry key="M2" value="4.044702454667888" />
-      <entry key="M5" value="6.633370715181733" />
-      <entry key="M10" value="9.597608368822893" />
-      <entry key="M15" value="11.312232790866005" />
-      <entry key="M30" value="14.399108139891698" />
-      <entry key="H1" value="18.318146107694524" />
-      <entry key="H2" value="22.420640780223664" />
-      <entry key="H4" value="25.656784617462012" />
-      <entry key="D1" value="32.13166396548074" />
-      <entry key="W1" value="36.06279032495323" />
+      <entry key="MS100" value="5.016789029694307E-45" />
+      <entry key="MS500" value="1.3806549923520863E-9" />
+      <entry key="S2" value="0.006095667813857057" />
+      <entry key="S5" value="0.1300195075348122" />
+      <entry key="S10" value="0.36058217861510033" />
+      <entry key="S30" value="0.7117619263334186" />
+      <entry key="S60" value="0.8436894848517134" />
+      <entry key="M2" value="0.9310244144740624" />
+      <entry key="M5" value="1.4907726301746047" />
+      <entry key="M10" value="3.1019346866035145" />
+      <entry key="M15" value="4.731703199722383" />
+      <entry key="M30" value="9.16916239448236" />
+      <entry key="H1" value="16.978864393754204" />
+      <entry key="H2" value="28.616771868769924" />
+      <entry key="H4" value="41.01500282212673" />
+      <entry key="D1" value="61.71470995513439" />
+      <entry key="W1" value="69.35144085643617" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="8.933843293462558E-10" />
-      <entry key="MS500" value="0.015496801391034078" />
-      <entry key="S2" value="0.44037031890862005" />
-      <entry key="S5" value="1.770287298370761" />
-      <entry key="S10" value="3.6249751736010265" />
-      <entry key="S30" value="8.206229284662257" />
-      <entry key="S60" value="14.964733107408094" />
-      <entry key="M2" value="25.82069654460527" />
-      <entry key="M5" value="47.3527941693165" />
-      <entry key="M10" value="67.47497200608167" />
-      <entry key="M15" value="82.31295516292874" />
-      <entry key="M30" value="143.72786928082445" />
-      <entry key="H1" value="288.0535096279355" />
-      <entry key="H2" value="471.26639335829793" />
-      <entry key="H4" value="627.4201035179176" />
-      <entry key="D1" value="1166.8286379551168" />
-      <entry key="W1" value="1652.988221149583" />
+      <entry key="MS100" value="1.9029398386382543" />
+      <entry key="MS500" value="3.3256628112306807" />
+      <entry key="S2" value="4.247682810537346" />
+      <entry key="S5" value="5.750378402531788" />
+      <entry key="S10" value="7.261185054534802" />
+      <entry key="S30" value="10.173548845095581" />
+      <entry key="S60" value="13.360005625455992" />
+      <entry key="M2" value="19.75743336695505" />
+      <entry key="M5" value="43.10046064175716" />
+      <entry key="M10" value="92.36400159677696" />
+      <entry key="M15" value="140.22687378925494" />
+      <entry key="M30" value="266.7713029309305" />
+      <entry key="H1" value="482.0112435718717" />
+      <entry key="H2" value="815.4356017044729" />
+      <entry key="H4" value="1199.2192496841299" />
+      <entry key="D1" value="2126.3842129423424" />
+      <entry key="W1" value="2745.5924224212304" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
@@ -240,7 +241,7 @@
       <workItem from="1789015508123" duration="2693000" />
       <workItem from="1789161022855" duration="19217000" />
       <workItem from="1789436829064" duration="4662000" />
-      <workItem from="1789680022128" duration="17625000" />
+      <workItem from="1789680022128" duration="29995000" />
     </task>
     <task id="LOCAL-00001" summary="updated progress">
       <option name="closed" value="true" />
@@ -266,7 +267,23 @@
       <option name="project" value="LOCAL" />
       <updated>1789766177716</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="ARP done">
+      <option name="closed" value="true" />
+      <created>1789772773896</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1789772773896</updated>
+    </task>
+    <task id="LOCAL-00005" summary="ARP and IP working">
+      <option name="closed" value="true" />
+      <created>1789782391510</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1789782391510</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,6 +293,8 @@
     <MESSAGE value="updated progress" />
     <MESSAGE value="refactor ethernetHeader" />
     <MESSAGE value="added arpHeader struct" />
-    <option name="LAST_COMMIT_MESSAGE" value="added arpHeader struct" />
+    <MESSAGE value="ARP done" />
+    <MESSAGE value="ARP and IP working" />
+    <option name="LAST_COMMIT_MESSAGE" value="ARP and IP working" />
   </component>
 </project>

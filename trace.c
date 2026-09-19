@@ -41,28 +41,16 @@ const char *ipProtocolStr(const uint8_t protocol) {
     }
 }
 
-void icmpPrint(u_char *next) {
-    printf("\n\tICMP Header\n");
-    const uint8_t type = next[0]; //first byte
-    switch (type) {
-        case REQUEST: printf("\t\tType: Request\n"); break;
-        case REPLY: printf("\t\tType: Reply\n"); break;
-        default: printf("\t\tType: Unknown\n"); break;
+const char *portStr(uint16_t port) {
+    switch (port) {
+        case 21: return "FTP";
+        case 23: return "Telnet";
+        case 25: return "SMTP";
+        case 80: return "HTTP";
+        case 110: return "POP3";
+        default: return NULL;
     }
 }
-
-void tcpPrint(u_char *next) {\
-    printf("\n\t\tTCP Header\n");
-    const uint8_t type = next[0]; //first byte
-
-}
-
-void udpPrint(const u_char *next) {
-    printf("\n\t\tUDP Header\n");
-    const uint16_t srcPort = next[0];
-    const uint16_t dstPort = next[16];
-}
-
 
 struct ethernetHeader {
     uint8_t dest[6];
@@ -95,6 +83,52 @@ struct ipHeader {
     uint8_t destIP[4];
 } __attribute__((packed));
 
+struct udpHeader {
+    uint16_t srcPort;
+    uint16_t destPort;
+    uint16_t length;
+    uint16_t checksum;
+} __attribute__((packed));
+
+void icmpPrint(const u_char *next) {
+    printf("\n\tICMP Header\n");
+    const uint8_t type = next[0]; //first byte
+    switch (type) {
+        case REQUEST: printf("\t\tType: Request\n"); break;
+        case REPLY: printf("\t\tType: Reply\n"); break;
+        default: printf("\t\tType: Unknown\n"); break;
+    }
+}
+
+void tcpPrint(const u_char *next) {\
+    printf("\n\t\tTCP Header\n");
+    // const uint8_t type = next[0]; //first byte
+
+}
+
+void udpPrint(const u_char *next) {
+    struct udpHeader *udp;
+    udp = (struct udpHeader *) next;
+    const uint16_t srcPort = ntohs(udp->srcPort);
+    const uint16_t destPort = ntohs(udp->destPort);
+
+
+    printf("\n\tUDP Header\n");
+    const char *srcLabel = portStr(srcPort);
+    const char *destLabel = portStr(destPort);
+
+    if (srcLabel != NULL) {
+        printf("\t\tSource Port:  %s\n", srcLabel);
+    } else {
+        printf("\t\tSource Port:  %d\n", srcPort);
+    }
+
+    if (destLabel != NULL) {
+        printf("\t\tDest Port:  %s\n", destLabel);
+    } else {
+        printf("\t\tDest Port:  %d\n", destPort);
+    }
+}
 
 uint16_t ethernetPrint(const u_char *packet) {
     struct ethernetHeader *eth;
@@ -181,7 +215,6 @@ int main(int argc, char *argv[]) {
 
     struct pcap_pkthdr header;
     const u_char *packet = pcap_next(handle, &header);
-    uint8_t ipHeaderLength;
     while (packet != NULL) {
         printf("\n");
         printf("Packet number: %d", packetNumber);

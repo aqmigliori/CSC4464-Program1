@@ -2,7 +2,7 @@
 #
 
 CC = gcc
-CFLAGS = -g -Wall
+CFLAGS = -g -Wall -Werror
 OS = $(shell uname -s)
 PROC = $(shell uname -p)
 EXEC_SUFFIX=$(OS)-$(PROC)
