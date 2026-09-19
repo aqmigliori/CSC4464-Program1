@@ -90,19 +90,76 @@ struct udpHeader {
     uint16_t checksum;
 } __attribute__((packed));
 
+struct tcpHeader {
+    uint16_t srcPort;
+    uint16_t destPort;
+    uint32_t sequenceNumber;
+    uint32_t ackNumber;
+    uint8_t offsetReserved;
+    uint8_t flags;
+    uint16_t window;
+    uint16_t checksum;
+    uint16_t urgentPointer;
+} __attribute__((packed));
+
 void icmpPrint(const u_char *next) {
     printf("\n\tICMP Header\n");
     const uint8_t type = next[0]; //first byte
     switch (type) {
-        case REQUEST: printf("\t\tType: Request\n"); break;
-        case REPLY: printf("\t\tType: Reply\n"); break;
-        default: printf("\t\tType: Unknown\n"); break;
+        case REQUEST: printf("\t\tType: Request\n");
+            break;
+        case REPLY: printf("\t\tType: Reply\n");
+            break;
+        default: printf("\t\tType: Unknown\n");
+            break;
     }
 }
 
 void tcpPrint(const u_char *next) {\
-    printf("\n\t\tTCP Header\n");
-    // const uint8_t type = next[0]; //first byte
+    struct tcpHeader *tcp;
+    tcp = (struct tcpHeader *) next;
+    const uint16_t srcPort = ntohs(tcp->srcPort);
+    const uint16_t destPort = ntohs(tcp->destPort);
+
+    const char *srcLabel = portStr(srcPort);
+    const char *destLabel = portStr(destPort);
+
+    printf("\n\tTCP Header\n");
+
+    if (srcLabel != NULL) {
+        printf("\t\tSource Port:  %s\n", srcLabel);
+    } else {
+        printf("\t\tSource Port:  %u\n", srcPort);
+    }
+
+    if (destLabel != NULL) {
+        printf("\t\tDest Port:  %s\n", destLabel);
+    } else {
+        printf("\t\tDest Port:  %u\n", destPort);
+    }
+
+    printf("\t\tSequence Number: %u\n", ntohl(tcp->sequenceNumber));
+    printf("\t\tACK Number: %u\n", ntohl(tcp->ackNumber));
+
+
+    if (tcp->flags & (1<<1)) {
+        printf("\t\tSYN Flag: Yes\n");
+    } else {
+        printf("\t\tSYN Flag: No\n");
+    }
+
+    if (tcp->flags & (1<<2)) {
+        printf("\t\tRST Flag: Yes\n");
+    } else {
+        printf("\t\tRST Flag: No\n");
+    }
+
+    if (tcp->flags & 1) {
+        printf("\t\tFIN Flag: Yes\n");
+    } else {
+        printf("\t\tFIN Flag: No\n");
+    }
+    printf("\t\tWindow Size: %u\n", ntohs(tcp->window));
 
 }
 
@@ -112,21 +169,22 @@ void udpPrint(const u_char *next) {
     const uint16_t srcPort = ntohs(udp->srcPort);
     const uint16_t destPort = ntohs(udp->destPort);
 
-
-    printf("\n\tUDP Header\n");
     const char *srcLabel = portStr(srcPort);
     const char *destLabel = portStr(destPort);
+
+    printf("\n\tUDP Header\n");
+
 
     if (srcLabel != NULL) {
         printf("\t\tSource Port:  %s\n", srcLabel);
     } else {
-        printf("\t\tSource Port:  %d\n", srcPort);
+        printf("\t\tSource Port:  %u\n", srcPort);
     }
 
     if (destLabel != NULL) {
         printf("\t\tDest Port:  %s\n", destLabel);
     } else {
-        printf("\t\tDest Port:  %d\n", destPort);
+        printf("\t\tDest Port:  %u\n", destPort);
     }
 }
 
@@ -164,12 +222,12 @@ void arpPrint(const u_char *packet) {
     printf("\t\tSender MAC: %x:%x:%x:%x:%x:%x\n", arp->srcHardwareAddr[0], arp->srcHardwareAddr[1],
            arp->srcHardwareAddr[2],
            arp->srcHardwareAddr[3], arp->srcHardwareAddr[4], arp->srcHardwareAddr[5]);
-    printf("\t\tSender IP: %d.%d.%d.%d\n", arp->srcProtocolAddr[0], arp->srcProtocolAddr[1], arp->srcProtocolAddr[2],
+    printf("\t\tSender IP: %u.%u.%u.%u\n", arp->srcProtocolAddr[0], arp->srcProtocolAddr[1], arp->srcProtocolAddr[2],
            arp->srcProtocolAddr[3]);
     printf("\t\tTarget MAC: %x:%x:%x:%x:%x:%x\n", arp->targetHardwareAddr[0], arp->targetHardwareAddr[1],
            arp->targetHardwareAddr[2],
            arp->targetHardwareAddr[3], arp->targetHardwareAddr[4], arp->targetHardwareAddr[5]);
-    printf("\t\tTarget IP: %d.%d.%d.%d\n", arp->targetProtocolAddr[0], arp->targetProtocolAddr[1],
+    printf("\t\tTarget IP: %u.%u.%u.%u\n", arp->targetProtocolAddr[0], arp->targetProtocolAddr[1],
            arp->targetProtocolAddr[2], arp->targetProtocolAddr[3]);
 }
 
@@ -182,18 +240,21 @@ void ipPrint(const u_char *packet) {
 
     printf("\n\tIP Header\n");
     printf("\t\tTOS: 0x%x\n", ip->tos);
-    printf("\t\tTTL: %d\n", ip->ttl);
+    printf("\t\tTTL: %u\n", ip->ttl);
     printf("\t\tProtocol: %s\n", ipProtocolStr(ip->protocol));
     printf("\t\tChecksum: %s (0x%x)\n", in_cksum((unsigned short *) ip, ipHeaderLength) == 0 ? "Correct" : "Incorrect",
            ntohs(ip->headerChecksum));
-    printf("\t\tSender IP: %d.%d.%d.%d\n", ip->srcIP[0], ip->srcIP[1], ip->srcIP[2], ip->srcIP[3]);
-    printf("\t\tDest IP: %d.%d.%d.%d\n", ip->destIP[0], ip->destIP[1], ip->destIP[2], ip->destIP[3]);
+    printf("\t\tSender IP: %u.%u.%u.%u\n", ip->srcIP[0], ip->srcIP[1], ip->srcIP[2], ip->srcIP[3]);
+    printf("\t\tDest IP: %u.%u.%u.%u\n", ip->destIP[0], ip->destIP[1], ip->destIP[2], ip->destIP[3]);
 
     const u_char *next = packet + ipHeaderLength; //pointer to end of ip header
     switch (ip->protocol) {
-        case ICMP: icmpPrint(next); break;
-        case TCP: tcpPrint(next); break;
-        case UDP: udpPrint(next); break;
+        case ICMP: icmpPrint(next);
+            break;
+        case TCP: tcpPrint(next);
+            break;
+        case UDP: udpPrint(next);
+            break;
         default: break; //No subheader
     }
 }
@@ -218,7 +279,7 @@ int main(int argc, char *argv[]) {
     while (packet != NULL) {
         printf("\n");
         printf("Packet number: %d", packetNumber);
-        printf("  Packet Len: %d\n\n", header.len);
+        printf("  Packet Len: %u\n\n", header.len);
         uint16_t etherType = ethernetPrint(packet);
         switch (etherType) {
             case ETH_TYPE_ARP: arpPrint(packet + sizeof(struct ethernetHeader));
