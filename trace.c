@@ -276,7 +276,7 @@ void ipPrint(const u_char *packet) {
     printf("\t\tTOS: 0x%x\n", ip->tos);
     printf("\t\tTTL: %u\n", ip->ttl);
     printf("\t\tProtocol: %s\n", ipProtocolStr(ip->protocol));
-    printf("\t\tChecksum: %s (0x%x)\n", in_cksum((unsigned short *) ip, ipHeaderLength) == 0 ? "Correct" : "Incorrect",
+    printf("\t\tChecksum: %s (0x%x)\n", in_cksum((unsigned short *) packet, ipHeaderLength) == 0 ? "Correct" : "Incorrect",
            ntohs(ip->headerChecksum));
     printf("\t\tSender IP: %u.%u.%u.%u\n", ip->srcIP[0], ip->srcIP[1], ip->srcIP[2], ip->srcIP[3]);
     printf("\t\tDest IP: %u.%u.%u.%u\n", ip->destIP[0], ip->destIP[1], ip->destIP[2], ip->destIP[3]);

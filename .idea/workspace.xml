@@ -25,8 +25,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="feac6806-76c9-4f78-af70-b6bb6f52ad3e" name="Changes" comment="TCP missing checksum">
+    <list default="true" id="feac6806-76c9-4f78-af70-b6bb6f52ad3e" name="Changes" comment="fixes for linux">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alignment.c" beforeDir="false" afterPath="$PROJECT_DIR$/alignment.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checksum.c" beforeDir="false" afterPath="$PROJECT_DIR$/checksum.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trace.c" beforeDir="false" afterPath="$PROJECT_DIR$/trace.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,61 +99,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.9802151886776307" />
-      <entry key="MS500" value="3.356565521689121" />
-      <entry key="S2" value="3.8219527130490554" />
-      <entry key="S5" value="3.9337514466725345" />
-      <entry key="S10" value="4.214987829813408" />
-      <entry key="S30" value="7.371712877503724" />
-      <entry key="S60" value="10.982040653001174" />
-      <entry key="M2" value="17.517003948551164" />
-      <entry key="M5" value="44.91278120145595" />
-      <entry key="M10" value="99.75276462341263" />
-      <entry key="M15" value="153.06599501992557" />
-      <entry key="M30" value="281.7222302718165" />
-      <entry key="H1" value="478.156263685405" />
-      <entry key="H2" value="819.3577340155827" />
-      <entry key="H4" value="1303.8183021136615" />
-      <entry key="D1" value="2555.6970100187264" />
-      <entry key="W1" value="3305.3909637136167" />
+      <entry key="MS100" value="1.0033781790203802" />
+      <entry key="MS500" value="1.7455958893295533" />
+      <entry key="S2" value="3.566811379267818" />
+      <entry key="S5" value="4.342584982430455" />
+      <entry key="S10" value="4.655245384530354" />
+      <entry key="S30" value="4.881303035028763" />
+      <entry key="S60" value="4.940165183462271" />
+      <entry key="M2" value="4.970142538778731" />
+      <entry key="M5" value="5.383103727245153" />
+      <entry key="M10" value="14.03490976361594" />
+      <entry key="M15" value="35.6938394548499" />
+      <entry key="M30" value="131.18632618528983" />
+      <entry key="H1" value="325.6655432999112" />
+      <entry key="H2" value="676.8330879749429" />
+      <entry key="H4" value="1187.0601001161774" />
+      <entry key="D1" value="2524.5627362096143" />
+      <entry key="W1" value="3310.180937956577" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="8.052387530412524E-175" />
-      <entry key="S2" value="2.9955816868355837E-44" />
-      <entry key="S5" value="3.8957624456246116E-18" />
-      <entry key="S10" value="1.9737689376029627E-9" />
-      <entry key="S30" value="0.0012614702817458567" />
-      <entry key="S60" value="0.03833429547975426" />
-      <entry key="M2" value="0.2634655186070999" />
-      <entry key="M5" value="1.373255329727641" />
-      <entry key="M10" value="3.346487446046043" />
-      <entry key="M15" value="4.952537323567339" />
-      <entry key="M30" value="8.22078511028838" />
-      <entry key="H1" value="13.311249440957855" />
-      <entry key="H2" value="23.79744241173463" />
-      <entry key="H4" value="39.38494923911521" />
-      <entry key="D1" value="71.85110616024842" />
-      <entry key="W1" value="83.54916799954263" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="1.6915643295608237E-148" />
+      <entry key="S10" value="1.3006017553075542E-74" />
+      <entry key="S30" value="2.364973973165088E-25" />
+      <entry key="S60" value="5.248825770483519E-13" />
+      <entry key="M2" value="9.749023559329815E-7" />
+      <entry key="M5" value="0.009226696332707675" />
+      <entry key="M10" value="0.2743068590189174" />
+      <entry key="M15" value="0.9345288976405469" />
+      <entry key="M30" value="3.5710487995826625" />
+      <entry key="H1" value="8.773241136857145" />
+      <entry key="H2" value="19.319723508829295" />
+      <entry key="H4" value="35.486698867521866" />
+      <entry key="D1" value="70.6137610700241" />
+      <entry key="W1" value="83.34209221596058" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.9243165017291113" />
-      <entry key="MS500" value="3.3378527468669543" />
-      <entry key="S2" value="3.8166470000534125" />
-      <entry key="S5" value="3.930811951810143" />
-      <entry key="S10" value="4.197662722445802" />
-      <entry key="S30" value="7.299734027469138" />
-      <entry key="S60" value="10.946866588232027" />
-      <entry key="M2" value="17.710282630687228" />
-      <entry key="M5" value="46.192460353202044" />
-      <entry key="M10" value="102.99571207075775" />
-      <entry key="M15" value="157.919297414412" />
-      <entry key="M30" value="289.86361116193757" />
-      <entry key="H1" value="491.4083334198435" />
-      <entry key="H2" value="843.1087510780392" />
-      <entry key="H4" value="1343.16834121581" />
-      <entry key="D1" value="2627.5378366174937" />
-      <entry key="W1" value="3388.938337941069" />
+      <entry key="MS100" value="0.9827289416947345" />
+      <entry key="MS500" value="1.73825205259304" />
+      <entry key="S2" value="3.562925576246387" />
+      <entry key="S5" value="4.340672836453153" />
+      <entry key="S10" value="4.654216702957501" />
+      <entry key="S30" value="4.880942589330892" />
+      <entry key="S60" value="4.939982672033397" />
+      <entry key="M2" value="4.970051417072494" />
+      <entry key="M5" value="5.391664285649518" />
+      <entry key="M10" value="14.300708637829084" />
+      <entry key="M15" value="36.6096272132337" />
+      <entry key="M30" value="134.72287254661953" />
+      <entry key="H1" value="334.39977425872775" />
+      <entry key="H2" value="696.1151183731818" />
+      <entry key="H4" value="1222.5153425407707" />
+      <entry key="D1" value="2595.166394455735" />
+      <entry key="W1" value="3393.5212408050857" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
@@ -202,6 +205,11 @@
     </key>
   </component>
   <component name="RunManager" selected="Native Application.trace-Darwin-arm">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="README" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Program1" TARGET_NAME="README" CONFIG_NAME="README" version="1" RUN_TARGET_PROJECT_NAME="Program1" RUN_TARGET_NAME="README">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -240,7 +248,7 @@
       <workItem from="1789015508123" duration="2693000" />
       <workItem from="1789161022855" duration="19217000" />
       <workItem from="1789436829064" duration="4662000" />
-      <workItem from="1789680022128" duration="38701000" />
+      <workItem from="1789680022128" duration="40640000" />
     </task>
     <task id="LOCAL-00001" summary="updated progress">
       <option name="closed" value="true" />
@@ -298,7 +306,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789792979606</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Finished with TCP + Checksum Added">
+      <option name="closed" value="true" />
+      <created>1789795314745</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1789795314745</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,6 +328,8 @@
     <MESSAGE value="ARP and IP working" />
     <MESSAGE value="UDP and ICMP working" />
     <MESSAGE value="TCP missing checksum" />
-    <option name="LAST_COMMIT_MESSAGE" value="TCP missing checksum" />
+    <MESSAGE value="Finished with TCP + Checksum Added" />
+    <MESSAGE value="fixes for linux" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixes for linux" />
   </component>
 </project>
