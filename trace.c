@@ -1,11 +1,10 @@
 #include <stdio.h>
 #include <pcap.h>
-#include <fcntl.h>
-#include <unistd.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
 #include "checksum.h"
+#include "smartalloc.h"
 
 
 /* Ethertypes */
@@ -102,6 +101,14 @@ struct tcpHeader {
     uint16_t urgentPointer;
 } __attribute__((packed));
 
+struct pseudoHeader {
+    uint8_t srcIP[4];
+    uint8_t destIP[4];
+    uint8_t zero;
+    uint8_t protocol;
+    uint16_t tcpLength;
+} __attribute__((packed));
+
 void icmpPrint(const u_char *next) {
     printf("\n\tICMP Header\n");
     const uint8_t type = next[0]; //first byte
@@ -115,7 +122,7 @@ void icmpPrint(const u_char *next) {
     }
 }
 
-void tcpPrint(const u_char *next) {\
+void tcpPrint(const u_char *next, const struct ipHeader *ip) {
     struct tcpHeader *tcp;
     tcp = (struct tcpHeader *) next;
     const uint16_t srcPort = ntohs(tcp->srcPort);
@@ -160,6 +167,33 @@ void tcpPrint(const u_char *next) {\
         printf("\t\tFIN Flag: No\n");
     }
     printf("\t\tWindow Size: %u\n", ntohs(tcp->window));
+
+    uint8_t ipHeaderLength = (ip->versionIHL & 0x0F) * 4;
+    uint16_t tcpLength = ntohs(ip->totalLength) - ipHeaderLength;
+
+    struct pseudoHeader pseudo;
+    memcpy(pseudo.srcIP, ip->srcIP, 4);
+    memcpy(pseudo.destIP, ip->destIP, 4);
+    pseudo.zero = 0;
+    pseudo.protocol = TCP;
+    pseudo.tcpLength = htons(tcpLength);
+
+    uint8_t *buf = malloc(sizeof(pseudo) + tcpLength);
+    if (buf == NULL) {
+        fprintf(stderr, "malloc failed\n");
+        exit(EXIT_FAILURE);
+    }
+    memcpy(buf, &pseudo, sizeof(pseudo));
+    memcpy(buf+sizeof(pseudo), next, tcpLength); //copy tcp header to pointer behind pseudo
+
+    uint16_t result = in_cksum((unsigned short *) buf, sizeof(pseudo) + tcpLength);
+
+    free(buf);
+
+    printf("\t\tChecksum: %s (0x%x)\n", result == 0 ? "Correct" : "Incorrect", ntohs(tcp->checksum));
+
+
+
 
 }
 
@@ -251,7 +285,7 @@ void ipPrint(const u_char *packet) {
     switch (ip->protocol) {
         case ICMP: icmpPrint(next);
             break;
-        case TCP: tcpPrint(next);
+        case TCP: tcpPrint(next, ip);
             break;
         case UDP: udpPrint(next);
             break;
@@ -285,6 +319,8 @@ int main(int argc, char *argv[]) {
             case ETH_TYPE_ARP: arpPrint(packet + sizeof(struct ethernetHeader));
                 break;
             case ETH_TYPE_IPV4: ipPrint(packet + sizeof(struct ethernetHeader));
+                break;
+            default: printf("\t\tUnknown PDU\n");
                 break;
         }
 
