@@ -5,26 +5,64 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
+#include "checksum.h"
 
 
 /* Ethertypes */
 #define ETH_TYPE_IPV4 0x0800
 #define ETH_TYPE_ARP 0x0806
 
-/* ARP */
+/* ARP opcodes */
 #define ARP_REQUEST 1
 #define ARP_REPLY 2
 
 /* IP Protocol Numbers */
+#define ICMP 1
+#define TCP 6
+#define UDP 17
+#define REQUEST 8
+#define REPLY 0
 
 
-const char *arpOpcodeStr(uint16_t opcode) {
+const char *arpOpcodeStr(const uint16_t opcode) {
     switch (opcode) {
         case ARP_REQUEST: return "Request";
         case ARP_REPLY: return "Reply";
         default: return "Unknown";
     }
 }
+
+const char *ipProtocolStr(const uint8_t protocol) {
+    switch (protocol) {
+        case ICMP: return "ICMP";
+        case TCP: return "TCP";
+        case UDP: return "UDP";
+        default: return "Unknown";
+    }
+}
+
+void icmpPrint(u_char *next) {
+    printf("\n\tICMP Header\n");
+    const uint8_t type = next[0]; //first byte
+    switch (type) {
+        case REQUEST: printf("\t\tType: Request\n"); break;
+        case REPLY: printf("\t\tType: Reply\n"); break;
+        default: printf("\t\tType: Unknown\n"); break;
+    }
+}
+
+void tcpPrint(u_char *next) {\
+    printf("\n\t\tTCP Header\n");
+    const uint8_t type = next[0]; //first byte
+
+}
+
+void udpPrint(const u_char *next) {
+    printf("\n\t\tUDP Header\n");
+    const uint16_t srcPort = next[0];
+    const uint16_t dstPort = next[16];
+}
+
 
 struct ethernetHeader {
     uint8_t dest[6];
@@ -42,6 +80,19 @@ struct arpHeader {
     uint8_t srcProtocolAddr[4];
     uint8_t targetHardwareAddr[6];
     uint8_t targetProtocolAddr[4];
+} __attribute__((packed));
+
+struct ipHeader {
+    uint8_t versionIHL;
+    uint8_t tos;
+    uint16_t totalLength;
+    uint16_t identification;
+    uint16_t flagsFragOffset;
+    uint8_t ttl;
+    uint8_t protocol;
+    uint16_t headerChecksum;
+    uint8_t srcIP[4];
+    uint8_t destIP[4];
 } __attribute__((packed));
 
 
@@ -88,7 +139,29 @@ void arpPrint(const u_char *packet) {
            arp->targetProtocolAddr[2], arp->targetProtocolAddr[3]);
 }
 
-void ipPrint() {
+void ipPrint(const u_char *packet) {
+    struct ipHeader *ip;
+    ip = (struct ipHeader *) packet;
+
+    uint8_t ihl = ip->versionIHL & 0x0F; //ihl is the number of words the header occupies
+    uint8_t ipHeaderLength = ihl * 4; //multiply by 4 bytes/word to get bytes
+
+    printf("\n\tIP Header\n");
+    printf("\t\tTOS: 0x%x\n", ip->tos);
+    printf("\t\tTTL: %d\n", ip->ttl);
+    printf("\t\tProtocol: %s\n", ipProtocolStr(ip->protocol));
+    printf("\t\tChecksum: %s (0x%x)\n", in_cksum((unsigned short *) ip, ipHeaderLength) == 0 ? "Correct" : "Incorrect",
+           ntohs(ip->headerChecksum));
+    printf("\t\tSender IP: %d.%d.%d.%d\n", ip->srcIP[0], ip->srcIP[1], ip->srcIP[2], ip->srcIP[3]);
+    printf("\t\tDest IP: %d.%d.%d.%d\n", ip->destIP[0], ip->destIP[1], ip->destIP[2], ip->destIP[3]);
+
+    const u_char *next = packet + ipHeaderLength; //pointer to end of ip header
+    switch (ip->protocol) {
+        case ICMP: icmpPrint(next); break;
+        case TCP: tcpPrint(next); break;
+        case UDP: udpPrint(next); break;
+        default: break; //No subheader
+    }
 }
 
 int main(int argc, char *argv[]) {
@@ -108,6 +181,7 @@ int main(int argc, char *argv[]) {
 
     struct pcap_pkthdr header;
     const u_char *packet = pcap_next(handle, &header);
+    uint8_t ipHeaderLength;
     while (packet != NULL) {
         printf("\n");
         printf("Packet number: %d", packetNumber);
@@ -116,14 +190,13 @@ int main(int argc, char *argv[]) {
         switch (etherType) {
             case ETH_TYPE_ARP: arpPrint(packet + sizeof(struct ethernetHeader));
                 break;
-            case ETH_TYPE_IPV4: ipPrint();
+            case ETH_TYPE_IPV4: ipPrint(packet + sizeof(struct ethernetHeader));
                 break;
         }
 
         packetNumber++;
         packet = pcap_next(handle, &header); //increment packet
     }
-
 
     pcap_close(handle);
     return 0;
