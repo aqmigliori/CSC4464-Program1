@@ -25,14 +25,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="feac6806-76c9-4f78-af70-b6bb6f52ad3e" name="Changes" comment="fixes for linux">
+    <list default="true" id="feac6806-76c9-4f78-af70-b6bb6f52ad3e" name="Changes" comment="whitespace fixes + README update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README" beforeDir="false" afterPath="$PROJECT_DIR$/README" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alignment.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checksum.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/checksum.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/smartalloc.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/smartalloc.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trace.c" beforeDir="false" afterPath="$PROJECT_DIR$/trace.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +38,7 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="28" />
+    <option name="cachedIndexableFilesCount" value="32" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -101,61 +96,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.006569503324753" />
-      <entry key="MS500" value="1.38139572662917" />
-      <entry key="S2" value="2.872771844151849" />
-      <entry key="S5" value="6.668244568181828" />
-      <entry key="S10" value="12.882142518664944" />
-      <entry key="S30" value="35.116570584470715" />
-      <entry key="S60" value="57.92569836373047" />
-      <entry key="M2" value="80.5065235312584" />
-      <entry key="M5" value="101.60320299306692" />
-      <entry key="M10" value="117.41575095486779" />
-      <entry key="M15" value="139.9221288821512" />
-      <entry key="M30" value="234.1549583806356" />
-      <entry key="H1" value="427.8160676408902" />
-      <entry key="H2" value="779.2159519492387" />
-      <entry key="H4" value="1291.245126141883" />
-      <entry key="D1" value="2635.7894944227332" />
-      <entry key="W1" value="3424.4766425463586" />
+      <entry key="MS100" value="1.0376329943695226" />
+      <entry key="MS500" value="1.9528337675580087" />
+      <entry key="S2" value="4.532762091077595" />
+      <entry key="S5" value="7.276174700702584" />
+      <entry key="S10" value="9.404094455855724" />
+      <entry key="S30" value="20.607762006286986" />
+      <entry key="S60" value="42.046031630318474" />
+      <entry key="M2" value="70.67027986220072" />
+      <entry key="M5" value="102.45214215015302" />
+      <entry key="M10" value="123.5916495845011" />
+      <entry key="M15" value="147.6605510733134" />
+      <entry key="M30" value="242.89842804065876" />
+      <entry key="H1" value="437.01257996967644" />
+      <entry key="H2" value="788.8418316683016" />
+      <entry key="H4" value="1301.6209043126514" />
+      <entry key="D1" value="2648.556381791252" />
+      <entry key="W1" value="3438.247781866804" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
       <entry key="S2" value="0.0" />
-      <entry key="S5" value="1.5815806078963936E-159" />
-      <entry key="S10" value="3.9769098122420645E-80" />
-      <entry key="S30" value="3.432628740873736E-27" />
-      <entry key="S60" value="6.323570888386527E-14" />
-      <entry key="M2" value="3.383851042553766E-7" />
-      <entry key="M5" value="0.006042633781731679" />
-      <entry key="M10" value="0.22198656482732118" />
-      <entry key="M15" value="0.8115577277956029" />
-      <entry key="M30" value="3.327814625940289" />
-      <entry key="H1" value="8.469187286300974" />
-      <entry key="H2" value="18.9819900789248" />
-      <entry key="H4" value="35.17515491934207" />
-      <entry key="D1" value="70.5100593158194" />
-      <entry key="W1" value="83.32459630252718" />
+      <entry key="S5" value="4.90917115653996E-163" />
+      <entry key="S10" value="7.006548998780545E-82" />
+      <entry key="S30" value="8.931950512592799E-28" />
+      <entry key="S60" value="3.2256862897637184E-14" />
+      <entry key="M2" value="2.416802188541633E-7" />
+      <entry key="M5" value="0.0052815114017627784" />
+      <entry key="M10" value="0.2075356283971624" />
+      <entry key="M15" value="0.7759434414332285" />
+      <entry key="M30" value="3.2539767888856455" />
+      <entry key="H1" value="8.374702710526837" />
+      <entry key="H2" value="18.875808958621587" />
+      <entry key="H4" value="35.07663587294638" />
+      <entry key="D1" value="70.47710658528027" />
+      <entry key="W1" value="83.31903210540347" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9656098412496422" />
-      <entry key="MS500" value="1.3704905383262465" />
-      <entry key="S2" value="2.867758739298445" />
-      <entry key="S5" value="6.66395813033721" />
-      <entry key="S10" value="12.87803890093806" />
-      <entry key="S30" value="35.11265756287468" />
-      <entry key="S60" value="57.922325877269174" />
-      <entry key="M2" value="80.5040887757263" />
-      <entry key="M5" value="101.60756901204098" />
-      <entry key="M10" value="117.63017224660236" />
-      <entry key="M15" value="140.71694362429432" />
-      <entry key="M30" value="237.45037905683608" />
-      <entry key="H1" value="436.2474739704337" />
-      <entry key="H2" value="798.1608459643257" />
-      <entry key="H4" value="1326.3890697152399" />
-      <entry key="D1" value="2706.289460556356" />
-      <entry key="W1" value="3507.7994491144927" />
+      <entry key="MS100" value="1.0017750633775147" />
+      <entry key="MS500" value="1.911185257095684" />
+      <entry key="S2" value="4.504881911862964" />
+      <entry key="S5" value="7.260941795001942" />
+      <entry key="S10" value="9.395072083007099" />
+      <entry key="S30" value="20.602643792616895" />
+      <entry key="S60" value="42.041817492483226" />
+      <entry key="M2" value="70.66712061864288" />
+      <entry key="M5" value="102.45533676489343" />
+      <entry key="M10" value="123.79179161325796" />
+      <entry key="M15" value="148.42027006420116" />
+      <entry key="M30" value="246.12062034021463" />
+      <entry key="H1" value="445.3498682653324" />
+      <entry key="H2" value="807.680724517579" />
+      <entry key="H4" value="1336.666402461189" />
+      <entry key="D1" value="2719.0233976094305" />
+      <entry key="W1" value="3521.5650240284144" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
@@ -207,11 +202,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Native Application.all">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="README" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Program1" TARGET_NAME="README" CONFIG_NAME="README" version="1" RUN_TARGET_PROJECT_NAME="Program1" RUN_TARGET_NAME="README">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -252,7 +242,8 @@
       <workItem from="1789436829064" duration="4662000" />
       <workItem from="1789680022128" duration="42757000" />
       <workItem from="1789832152257" duration="2010000" />
-      <workItem from="1789834827231" duration="10000" />
+      <workItem from="1789834827231" duration="350000" />
+      <workItem from="1789857100858" duration="862000" />
     </task>
     <task id="LOCAL-00001" summary="updated progress">
       <option name="closed" value="true" />
@@ -326,7 +317,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789797677123</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="whitespace fixes + README update">
+      <option name="closed" value="true" />
+      <created>1789835029905</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1789835029905</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -353,7 +352,8 @@
     <MESSAGE value="TCP missing checksum" />
     <MESSAGE value="Finished with TCP + Checksum Added" />
     <MESSAGE value="fixes for linux" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixes for linux" />
+    <MESSAGE value="whitespace fixes + README update" />
+    <option name="LAST_COMMIT_MESSAGE" value="whitespace fixes + README update" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -238,12 +238,13 @@ uint16_t ethernetPrint(const u_char *packet) {
 
 
     printf("\t\tType: ");
-    if (etherType == 0x0806) {
+    if (etherType == ETH_TYPE_ARP) {
         printf("ARP\n");
-    } else if (etherType == 0x0800) {
+    } else if (etherType == ETH_TYPE_IPV4) {
         printf("IP\n");
     } else {
         printf("Unknown\n");
+        printf("Unknown PDU\n");
     }
     return etherType;
 }
@@ -311,6 +312,13 @@ int main(int argc, char *argv[]) {
     struct pcap_pkthdr header;
     const u_char *packet = pcap_next(handle, &header);
     while (packet != NULL) {
+        if (header.caplen < sizeof(struct ethernetHeader)) {
+            /* too short to hold an Ethernet header - count it, print nothing */
+            packetNumber++;
+            packet = pcap_next(handle, &header);
+            continue;
+        }
+
         printf("\n");
         printf("Packet number: %d", packetNumber);
         printf("  Packet Len: %u\n\n", header.len);
@@ -320,8 +328,7 @@ int main(int argc, char *argv[]) {
                 break;
             case ETH_TYPE_IPV4: ipPrint(packet + sizeof(struct ethernetHeader));
                 break;
-            default: printf("\t\tUnknown PDU\n");
-                break;
+            default: break; /* Unknown PDU already printed by ethernetPrint */
         }
 
         packetNumber++;
