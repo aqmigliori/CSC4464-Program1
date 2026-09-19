@@ -8,12 +8,12 @@
 #endif
 
 /* Smartalloc.h       Copyright Clinton Staley 1991
- *
+ * 
  * Smartalloc provides an malloc version which checks for several possible
  * errors:
  *
  * 1. Failure of malloc or calloc call for any reason.
- * 2. Attempt to free memory not allocated by malloc, or calloc
+ * 2. Attempt to free memory not allocated by malloc, or calloc 
  *    or already freed.
  * 3. Writing past the end or before the beginning of allocated memory.
  * 4. Failure to free memory by some point in the program.
@@ -27,7 +27,7 @@
  * memory unfreed, call report_space().  If any unfreed memory is
  * outstanding, report_space will return the number of bytes of unfreed
  * memory.  If no memory is unfreed, report_space returns 0.  Errors 5
- * and 6 are "detected" by filling the memory block with random bit-patterns,
+ * and 6 are "detected" by filling the memory block with random bit-patterns, 
  * so that runtime errors are likely to result from those two errors.
  *
  * All rights to this package are reserved by its author.  Duplication of
@@ -179,18 +179,18 @@ inline bool operator!=(const STLsmartalloc<T>&, const STLsmartalloc<T>&)
 	return false;
 }
 
-// #define SMA(x) STLsmartalloc<x,__FILE__,__LINE__>
-#define SMA(x) STLsmartalloc<x>
+// #define SMA(x) STLsmartalloc<x,__FILE__,__LINE__> 
+#define SMA(x) STLsmartalloc<x> 
 
 namespace SMA {
    typedef std::basic_string<char, std::char_traits<char>,
            STLsmartalloc<char> > string;
 
-   template <class T>
+   template <class T> 
       class vector : public std::vector<T, STLsmartalloc<T> > {
    };
 
-   template <class T>
+   template <class T> 
       class list : public std::list<T, STLsmartalloc<T> > {
    };
 
@@ -199,7 +199,7 @@ namespace SMA {
       };
 
 #ifdef __GXX_EXPERIMENTAL_CXX0X__
-   template <class Key, class Ty, class Hash = std::hash<Key>,
+   template <class Key, class Ty, class Hash = std::hash<Key>, 
             class Pred = std::equal_to<Key>  >
       class unordered_map : public std::unordered_map<Key, Ty, Hash, Pred,
          STLsmartalloc< std::pair<const Key, Ty> > > {
